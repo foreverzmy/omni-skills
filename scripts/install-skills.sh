@@ -5,6 +5,7 @@ REPO="https://github.com/aiomni/omni-skills"
 SKILLS=(
   engineering-task-system
   egui-screenshot
+  writing-spec
 )
 
 for skill in "${SKILLS[@]}"; do

@@ -2,10 +2,11 @@
 
 [English](README.md) | 中文
 
-这是一个面向用户的 skills 仓库，当前包含两类常用能力：
+这是一个面向用户的 skills 仓库，当前包含三类常用能力：
 
 - 把模糊的研发目标拆成可以执行、可以追踪、可以验收的任务系统
 - 为 `egui` / `eframe` 应用添加截图能力、截图测试和图片导出流程
+- 为 AI Coding 项目维护 Snapshot + Patch 的 Spec source of truth
 
 你可以通过 [`skills.sh`](https://skills.sh/) 安装本仓库中的任意 skill。
 
@@ -21,6 +22,7 @@ npx skills add https://github.com/aiomni/omni-skills --skill egui-screenshot
 
 - `engineering-task-system`
 - `egui-screenshot`
+- `writing-spec`
 
 > [!NOTE]
 > 运行安装命令前，请确保你的环境中可以使用 `npx`。
@@ -37,7 +39,7 @@ bash scripts/install-skills.sh
 
 ```bash
 REPO="https://github.com/aiomni/omni-skills"
-for skill in engineering-task-system egui-screenshot; do
+for skill in engineering-task-system egui-screenshot writing-spec; do
   npx skills add "$REPO" --skill "$skill"
 done
 ```
@@ -79,16 +81,36 @@ npx skills add https://github.com/aiomni/omni-skills --skill engineering-task-sy
 npx skills add https://github.com/aiomni/omni-skills --skill egui-screenshot
 ```
 
+### `writing-spec`
+
+为 AI Coding 项目创建和维护结构化 Spec System。
+
+适合这些场景：
+
+- 把 `specs/current/` 设为唯一有效的 Spec source of truth
+- 分离 Current State Snapshot、Patch Log 和 Archive
+- 通过 Patch + Compiler 演进 Spec，而不是整篇重写
+- 避免 `log/` 和 `archive/` 污染 LLM context
+- 把 Capability、System、Contract Spec Object 维护成小型 Spec Graph
+
+安装：
+
+```bash
+npx skills add https://github.com/aiomni/omni-skills --skill writing-spec
+```
+
 ## 应该先装哪个？
 
 - 如果你的问题主要是需求拆解、执行计划、依赖管理、验收和跟踪，先装 `engineering-task-system`。
 - 如果你的问题主要是 `egui` 界面截图、图片导出或截图测试，先装 `egui-screenshot`。
-- 如果你同时需要交付管理和 UI 截图能力，可以两个都装。
+- 如果你的问题主要是 Spec source of truth、Snapshot、Patch、Archive 和 LLM context 治理，先装 `writing-spec`。
+- 如果你同时需要交付管理、UI 截图和 Spec governance，可以一起安装。
 
 ## 仓库内容
 
 ```text
 skills/
 ├── engineering-task-system/
-└── egui-screenshot/
+├── egui-screenshot/
+└── writing-spec/
 ```

@@ -2,10 +2,11 @@
 
 English | [中文](./README.zh-CN.md)
 
-User-focused skills for two common workflows:
+User-focused skills for three common workflows:
 
 - turning vague engineering work into an executable task system
 - adding screenshot capture and screenshot-driven testing to `egui` and `eframe` apps
+- maintaining a Snapshot + Patch Spec System as the source of truth for AI Coding projects
 
 Install any skill in this repository with [`skills.sh`](https://skills.sh/).
 
@@ -21,6 +22,7 @@ Available skill names:
 
 - `engineering-task-system`
 - `egui-screenshot`
+- `writing-spec`
 
 > [!NOTE]
 > You need `npx` in your shell to run the installation commands.
@@ -37,7 +39,7 @@ If you prefer a one-liner instead of the script:
 
 ```bash
 REPO="https://github.com/aiomni/omni-skills"
-for skill in engineering-task-system egui-screenshot; do
+for skill in engineering-task-system egui-screenshot writing-spec; do
   npx skills add "$REPO" --skill "$skill"
 done
 ```
@@ -79,16 +81,36 @@ Install:
 npx skills add https://github.com/aiomni/omni-skills --skill egui-screenshot
 ```
 
+### `writing-spec`
+
+Create and maintain a structured Spec System for AI Coding projects.
+
+Best for:
+
+- making `specs/current/` the only valid Spec source of truth
+- separating Current State Snapshot, Patch Log, and Archive
+- evolving Specs through Patch + Compiler instead of whole-doc rewrites
+- keeping LLM context clean by excluding stale `log/` and `archive/` content
+- modeling Capability, System, and Contract Spec Objects as a small Spec Graph
+
+Install:
+
+```bash
+npx skills add https://github.com/aiomni/omni-skills --skill writing-spec
+```
+
 ## Which Skill Should You Choose?
 
 - Choose `engineering-task-system` when the hard part is planning, sequencing, tracking, or reviewing engineering work.
 - Choose `egui-screenshot` when the hard part is capturing UI images, saving screenshots, or testing `egui` output.
-- Install both if you want one skill for delivery management and another for UI screenshot workflows.
+- Choose `writing-spec` when the hard part is maintaining a unique current Spec truth for AI Coding.
+- Install multiple skills when you need delivery management, UI screenshot workflows, and Spec governance together.
 
 ## Repository Contents
 
 ```text
 skills/
 ├── engineering-task-system/
-└── egui-screenshot/
+├── egui-screenshot/
+└── writing-spec/
 ```
