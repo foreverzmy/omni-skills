@@ -109,8 +109,11 @@ npx skills add https://github.com/aiomni/omni-skills --skill writing-spec
 ## 仓库内容
 
 ```text
+principles.md
 skills/
 ├── engineering-task-system/
 ├── egui-screenshot/
 └── writing-spec/
 ```
+
+`principles.md` 是一份中文长文参考，覆盖程序设计原则、设计模式、架构模式和并发模式。`writing-spec` skill 仍然把面向 Spec 边界判断的小型原则文件放在 `skills/writing-spec/references/principles/`，方便按需加载。

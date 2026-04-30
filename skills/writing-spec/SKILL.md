@@ -170,6 +170,8 @@ Guide rules：
 
 当任务涉及 Spec 边界、Capability 拆分、Contract 兼容、权限 scope、Graph 关系或 abstraction 选择时，按需读取 `references/principles/` 中的英文 Principle 文件。不要一次性全部加载；只加载能影响当前 design decision 的 Principle。
 
+仓库根目录的 `principles.md` 是中文长文参考，适合用户明确要求系统性学习或完整 review 设计原则时读取；日常 Spec 判断仍优先使用本 skill 下拆分后的 principle references，避免把大文档整体注入 context。
+
 可用 references：
 - `references/principles/single-responsibility.md`
 - `references/principles/open-closed.md`

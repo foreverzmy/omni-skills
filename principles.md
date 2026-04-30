@@ -20,8 +20,8 @@
 > ```java
 > class VIPCenter {
 >   public serviceVIP(user: User) {
->     if(user.getType() === "SlumDogVIP") {
->       // 穷x VIP，活动抢的那种
+>     if(user.getType() === "TrialVIP") {
+>       // 活动赠送 VIP
 >       // do something
 >     } else if (user.getType() === "RealVIP") {
 >       // do something
@@ -46,7 +46,7 @@
 >   public service(user: User);
 > }
 > 
-> class SlumDogVIPServiceProvider implements ServiceProvider {
+> class TrialVIPServiceProvider implements ServiceProvider {
 >   public service(user: User) {
 >     // do something
 >   }

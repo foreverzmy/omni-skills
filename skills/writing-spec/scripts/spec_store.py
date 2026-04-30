@@ -18,6 +18,7 @@ except ImportError:  # pragma: no cover
 
 KINDS = {"capability", "system", "contract"}
 RELATION_KEYS = ("depends_on", "extends", "constrains")
+CHANGE_OPERATOR_KEYS = {"set", "add", "remove"}
 BAD_VERSION_NAME = re.compile(r"(^|[_.-])(v\d+|final|latest|new)([_.-]|$)", re.IGNORECASE)
 FORBIDDEN_CURRENT_KEYS = {
     "description",
@@ -271,6 +272,11 @@ def validate_guides(
     errors: list[str] = []
     guides_root = root / "guides"
     for target, guide_list in sorted(guides.items()):
+        if len(guide_list) > 1:
+            duplicate_paths = guide_paths.get(target, [])
+            first_path = duplicate_paths[0] if duplicate_paths else guide_path(root, target)
+            other_paths = ", ".join(str(path) for path in duplicate_paths[1:]) or "unknown duplicate path"
+            errors.append(f"{first_path}: duplicate Guide target {target}; also seen at {other_paths}")
         for index, guide in enumerate(guide_list):
             path = guide_paths.get(target, [guide_path(root, target)])[index]
             guide_id = guide.get("id")
@@ -388,10 +394,24 @@ def apply_changes(spec: dict[str, Any], changes: dict[str, Any]) -> None:
     if not isinstance(changes, dict) or not changes:
         raise SpecError("update patch requires non-empty changes object")
 
-    if any(key in changes for key in ("set", "add", "remove")):
-        for dotted, value in flatten_changes(changes.get("set") or {}):
+    if any(key in changes for key in CHANGE_OPERATOR_KEYS):
+        direct_keys = sorted(str(key) for key in changes if key not in CHANGE_OPERATOR_KEYS)
+        if direct_keys:
+            raise SpecError(
+                "changes cannot mix operator keys (set/add/remove) with direct paths: "
+                + ", ".join(direct_keys)
+            )
+
+        set_changes = changes.get("set") or {}
+        add_changes = changes.get("add") or {}
+        if not isinstance(set_changes, dict):
+            raise SpecError("changes.set must be an object")
+        if not isinstance(add_changes, dict):
+            raise SpecError("changes.add must be an object")
+
+        for dotted, value in flatten_changes(set_changes):
             set_dotted(spec, dotted, value)
-        for dotted, value in flatten_changes(changes.get("add") or {}):
+        for dotted, value in flatten_changes(add_changes):
             add_dotted(spec, dotted, value)
         remove_changes = changes.get("remove") or []
         if isinstance(remove_changes, list):

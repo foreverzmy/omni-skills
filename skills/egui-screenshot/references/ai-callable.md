@@ -58,9 +58,9 @@ Ready result:
 }
 ```
 
-## Repository-specific integration path
+## Repository integration path
 
-In this repository, follow the existing host op pattern.
+Follow the target repository's existing host operation, command, SDK, or bridge pattern. Do not add a parallel screenshot pipeline unless the project has no integration layer yet.
 
 Rust side:
 
@@ -68,14 +68,14 @@ Rust side:
 - Request captures from `eframe::App::update`.
 - Collect `Event::Screenshot` in the same app loop.
 - Persist the image to a file when it becomes ready.
-- Expose two ops such as `op_host_screenshot_request` and `op_host_screenshot_poll`.
-- Register them in `crates/ruact-deno/ops.rs` and `crates/ruact-deno/lib.rs`.
+- Expose two operations such as `screenshot_request` and `screenshot_poll` through the existing native command or host-op registry.
 
-JS runtime side:
+Runtime or SDK side:
 
-- Wire the new ops in `esm/ruact_init.js`.
-- Add a typed surface in `js/runtime-sdk/contracts.ts` and `js/runtime-sdk/bridge-types.ts`.
-- Expose a small wrapper in `js/runtime-sdk/api.ts`, for example `runtime.ui.screenshot()`.
+- Wire the new operations into the existing host adapter or generated bindings.
+- Add typed request and response contracts wherever the project keeps SDK types.
+- Expose a small wrapper, for example `runtime.ui.screenshot()` or the closest existing UI namespace.
+- Regenerate or rebuild generated files before finishing if the repository requires it.
 
 Keep the app-facing API simple:
 
@@ -111,4 +111,4 @@ Do not hide screenshot capture behind an unrelated permission.
 - trying to block until the screenshot arrives in the same call
 - putting screenshot transport inside `view` requests because it "sounds related"
 - returning a relative path that the caller cannot resolve
-- forgetting to rebuild `esm/` after changing `js/runtime-sdk/*`
+- forgetting to regenerate or rebuild SDK/host-adapter outputs after changing source contracts

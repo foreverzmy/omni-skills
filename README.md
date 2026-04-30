@@ -109,8 +109,11 @@ npx skills add https://github.com/aiomni/omni-skills --skill writing-spec
 ## Repository Contents
 
 ```text
+principles.md
 skills/
 ├── engineering-task-system/
 ├── egui-screenshot/
 └── writing-spec/
 ```
+
+`principles.md` is a long-form Chinese reference for programming principles, design patterns, architecture patterns, and concurrency patterns. The `writing-spec` skill keeps smaller Spec-oriented principle references under `skills/writing-spec/references/principles/` for targeted context loading.
