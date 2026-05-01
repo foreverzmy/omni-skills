@@ -4,7 +4,7 @@
 
 这是一个面向用户的 skills 仓库，当前包含三类常用能力：
 
-- 把模糊的研发目标拆成可以执行、可以追踪、可以验收的任务系统
+- 把模糊的研发目标写成可以执行、可以追踪、可以验收的计划和任务系统
 - 为 `egui` / `eframe` 应用添加截图能力、截图测试和图片导出流程
 - 为 AI Coding 项目维护 Snapshot + Patch 的 Spec source of truth
 
@@ -20,7 +20,7 @@ npx skills add https://github.com/aiomni/omni-skills --skill egui-screenshot
 
 本仓库当前提供的 skill 名称：
 
-- `engineering-task-system`
+- `writing-plans`
 - `egui-screenshot`
 - `writing-spec`
 
@@ -39,16 +39,16 @@ bash scripts/install-skills.sh
 
 ```bash
 REPO="https://github.com/aiomni/omni-skills"
-for skill in engineering-task-system egui-screenshot writing-spec; do
+for skill in writing-plans egui-screenshot writing-spec; do
   npx skills add "$REPO" --skill "$skill"
 done
 ```
 
 ## Skills 说明
 
-### `engineering-task-system`
+### `writing-plans`
 
-把宽泛的研发需求收敛成真正可执行的任务系统，而不只是简单列一份 TODO。
+把宽泛的研发需求收敛成真正可执行的计划和任务系统，而不只是简单列一份 TODO。
 
 适合这些场景：
 
@@ -60,7 +60,7 @@ done
 安装：
 
 ```bash
-npx skills add https://github.com/aiomni/omni-skills --skill engineering-task-system
+npx skills add https://github.com/aiomni/omni-skills --skill writing-plans
 ```
 
 ### `egui-screenshot`
@@ -101,7 +101,7 @@ npx skills add https://github.com/aiomni/omni-skills --skill writing-spec
 
 ## 应该先装哪个？
 
-- 如果你的问题主要是需求拆解、执行计划、依赖管理、验收和跟踪，先装 `engineering-task-system`。
+- 如果你的问题主要是需求拆解、执行计划、依赖管理、验收和跟踪，先装 `writing-plans`。
 - 如果你的问题主要是 `egui` 界面截图、图片导出或截图测试，先装 `egui-screenshot`。
 - 如果你的问题主要是 Spec source of truth、Snapshot、Patch、Archive 和 LLM context 治理，先装 `writing-spec`。
 - 如果你同时需要交付管理、UI 截图和 Spec governance，可以一起安装。
@@ -111,7 +111,7 @@ npx skills add https://github.com/aiomni/omni-skills --skill writing-spec
 ```text
 principles.md
 skills/
-├── engineering-task-system/
+├── writing-plans/
 ├── egui-screenshot/
 └── writing-spec/
 ```

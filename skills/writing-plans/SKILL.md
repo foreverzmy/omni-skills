@@ -1,9 +1,9 @@
 ---
-name: engineering-task-system
-description: Use when asked to break down or execute engineering work, create implementation plans, define milestones, dependencies, critical paths, acceptance criteria, task cards, dashboards, execution logs, reviews, or inbox capture, or turn a vague engineering goal into an executable task system. Also use when updating existing task cards, syncing real progress, or deciding whether follow-up work should become a tracked task, even if the user does not explicitly ask to create a tasks directory.
+name: writing-plans
+description: Use when asked to write, break down, or execute engineering plans, create implementation plans, define milestones, dependencies, critical paths, acceptance criteria, task cards, dashboards, execution logs, reviews, or inbox capture, or turn a vague engineering goal into an executable plan system. Also use when updating existing plan or task files, syncing real progress, or deciding whether follow-up work should become a tracked task, even if the user does not explicitly ask to create a tasks directory.
 ---
 
-# Engineering Task System
+# Writing Plans
 
 把模糊的研发目标收敛成可执行任务，并在执行过程中持续回写。重点不是“列 TODO”，而是把下面四件事始终写清楚：
 - 为什么现在做。

@@ -3,7 +3,7 @@ set -euo pipefail
 
 REPO="https://github.com/aiomni/omni-skills"
 SKILLS=(
-  engineering-task-system
+  writing-plans
   egui-screenshot
   writing-spec
 )

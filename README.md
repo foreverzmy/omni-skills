@@ -4,7 +4,7 @@ English | [中文](./README.zh-CN.md)
 
 User-focused skills for three common workflows:
 
-- turning vague engineering work into an executable task system
+- turning vague engineering work into executable plans and tracked tasks
 - adding screenshot capture and screenshot-driven testing to `egui` and `eframe` apps
 - maintaining a Snapshot + Patch Spec System as the source of truth for AI Coding projects
 
@@ -20,7 +20,7 @@ npx skills add https://github.com/aiomni/omni-skills --skill egui-screenshot
 
 Available skill names:
 
-- `engineering-task-system`
+- `writing-plans`
 - `egui-screenshot`
 - `writing-spec`
 
@@ -39,16 +39,16 @@ If you prefer a one-liner instead of the script:
 
 ```bash
 REPO="https://github.com/aiomni/omni-skills"
-for skill in engineering-task-system egui-screenshot writing-spec; do
+for skill in writing-plans egui-screenshot writing-spec; do
   npx skills add "$REPO" --skill "$skill"
 done
 ```
 
 ## Included Skills
 
-### `engineering-task-system`
+### `writing-plans`
 
-Turn broad engineering goals into a task system that can actually be executed and reviewed.
+Turn broad engineering goals into plans and task systems that can actually be executed and reviewed.
 
 Best for:
 
@@ -60,7 +60,7 @@ Best for:
 Install:
 
 ```bash
-npx skills add https://github.com/aiomni/omni-skills --skill engineering-task-system
+npx skills add https://github.com/aiomni/omni-skills --skill writing-plans
 ```
 
 ### `egui-screenshot`
@@ -101,7 +101,7 @@ npx skills add https://github.com/aiomni/omni-skills --skill writing-spec
 
 ## Which Skill Should You Choose?
 
-- Choose `engineering-task-system` when the hard part is planning, sequencing, tracking, or reviewing engineering work.
+- Choose `writing-plans` when the hard part is planning, sequencing, tracking, or reviewing engineering work.
 - Choose `egui-screenshot` when the hard part is capturing UI images, saving screenshots, or testing `egui` output.
 - Choose `writing-spec` when the hard part is maintaining a unique current Spec truth for AI Coding.
 - Install multiple skills when you need delivery management, UI screenshot workflows, and Spec governance together.
@@ -111,7 +111,7 @@ npx skills add https://github.com/aiomni/omni-skills --skill writing-spec
 ```text
 principles.md
 skills/
-├── engineering-task-system/
+├── writing-plans/
 ├── egui-screenshot/
 └── writing-spec/
 ```
