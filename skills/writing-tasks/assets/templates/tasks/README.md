@@ -1,6 +1,6 @@
 # Tasks Guide
 
-This directory turns engineering goals into executable, trackable, and reviewable tasks. It is not a journal. It should continuously answer:
+This directory lives at `omni-coding/tasks/` and turns engineering goals into executable, trackable, and reviewable tasks. It is not a journal. It should continuously answer:
 - What should be done?
 - Why should it happen now?
 - What proves it is done?
@@ -11,19 +11,22 @@ This directory turns engineering goals into executable, trackable, and reviewabl
 ## Directory Structure
 
 ```text
-tasks/
-├── README.md                # Task-system guide
-├── index.md                 # Dashboard and current task view
-├── inbox.md                 # Untriaged capture
-├── tasks/                   # Individual task cards
-├── projects/                # Project-level coordination
-└── templates/               # Reusable task templates
+omni-coding/
+├── specs/                   # Current Spec System
+├── plans/                   # Strategy-level Plans
+└── tasks/
+    ├── README.md            # Task-system guide
+    ├── index.md             # Dashboard and current task view
+    ├── inbox.md             # Untriaged capture
+    ├── tasks/               # Individual task cards
+    ├── projects/            # Project-level coordination
+    └── templates/           # Reusable task templates
 ```
 
 Recommended reading order:
 - Start with `index.md` to understand priority and critical path.
 - Read `projects/<project>.md` for project constraints, milestones, and final acceptance.
-- Open the relevant `tasks/task-xxx.md` before implementation.
+- Open the relevant `tasks/task-xxx.md` inside `omni-coding/tasks/` before implementation.
 - Put temporary ideas, risks, and untriaged follow-ups in `inbox.md` first.
 
 ## Task-System Principles

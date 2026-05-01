@@ -689,24 +689,24 @@ def build_parser() -> argparse.ArgumentParser:
     parser = argparse.ArgumentParser(description="Maintain a Snapshot + Patch + Guide Spec System")
     subparsers = parser.add_subparsers(dest="command", required=True)
 
-    init_parser = subparsers.add_parser("init", help="create specs/current, specs/guides, specs/log, specs/archive")
-    init_parser.add_argument("root", help="Spec root directory, usually ./specs")
+    init_parser = subparsers.add_parser("init", help="create omni-coding/specs/current, guides, log, and archive")
+    init_parser.add_argument("root", help="Spec root directory, usually ./omni-coding/specs")
     init_parser.add_argument("--with-examples", action="store_true", help="write minimal example Spec and Guide Objects")
     init_parser.set_defaults(func=command_init)
 
     validate_parser = subparsers.add_parser("validate", help="validate current Snapshot and Guides")
-    validate_parser.add_argument("root", help="Spec root directory, usually ./specs")
+    validate_parser.add_argument("root", help="Spec root directory, usually ./omni-coding/specs")
     validate_parser.set_defaults(func=command_validate)
 
     read_parser = subparsers.add_parser("read", help="read a current Spec Object")
-    read_parser.add_argument("root", help="Spec root directory, usually ./specs")
+    read_parser.add_argument("root", help="Spec root directory, usually ./omni-coding/specs")
     read_parser.add_argument("spec_id", help="Spec id to read from current Snapshot")
     read_parser.add_argument("--with-deps", action="store_true", help="include related current Specs")
     read_parser.add_argument("--with-guide", action="store_true", help="include weak Guide Object(s) for selected Specs")
     read_parser.set_defaults(func=command_read)
 
     patch_parser = subparsers.add_parser("patch", help="apply a Spec Patch and compile current Snapshot")
-    patch_parser.add_argument("root", help="Spec root directory, usually ./specs")
+    patch_parser.add_argument("root", help="Spec root directory, usually ./omni-coding/specs")
     patch_parser.add_argument("patch_file", help="YAML patch file")
     patch_parser.set_defaults(func=command_patch)
 

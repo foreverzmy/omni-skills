@@ -1,6 +1,6 @@
 # Spec System
 
-本目录把项目规则维护成唯一有效的 Current State Snapshot。
+本目录位于 `omni-coding/specs/`，把项目规则维护成唯一有效的 Current State Snapshot。
 
 ## Hard Rules
 

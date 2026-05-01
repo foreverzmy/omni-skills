@@ -20,6 +20,8 @@ This skill includes reusable Plan templates under `assets/templates/plans/`:
 
 Use these assets when the target repository has no existing planning convention and the Plan should be persisted. Copy only the needed templates, replace placeholders immediately, and adapt naming to the target repository. Do not force a new planning layout when the repository already has one.
 
+Default persisted output location for new repositories: `omni-coding/plans/`. Keep Plan artifacts under this shared `omni-coding/` workspace so they sit next to `omni-coding/specs/` and `omni-coding/tasks/`.
+
 ## References
 
 Read `references/plan-patterns.md` when a Plan needs a known strategy shape, such as compatibility-first migration, strangler replacement, vertical slice delivery, risk-first spike, or rollout with guardrails. Do not load it for simple Plans where the default workflow is enough.
@@ -74,7 +76,7 @@ Before writing the Plan, answer:
 3. Which constraints are hard requirements, and which are implementation choices?
 4. Which unresolved questions could change the route?
 
-If the target repository has `specs/current/`, cite the relevant current Spec Objects. Do not read `specs/log/` or `specs/archive/` unless the user asks for historical analysis.
+If the target repository has `omni-coding/specs/current/`, cite the relevant current Spec Objects. Do not read `omni-coding/specs/log/` or `omni-coding/specs/archive/` unless the user asks for historical analysis.
 
 ### 2. Stay At Strategy Level
 
@@ -173,21 +175,24 @@ task_candidates:
 
 If the target project already has a planning convention, follow it. Do not force a new directory layout.
 
-If the target project has no convention and the Plan must be persisted, use the templates in `assets/templates/plans/` and prefer a minimal structure:
+If the target project has no convention and the Plan must be persisted, use the templates in `assets/templates/plans/` and prefer the shared `omni-coding/` structure:
 
 ```text
-plans/
-├── README.md
-├── current/
-│   └── plan.<domain>.<name>.md
-└── archive/
+omni-coding/
+├── specs/
+├── plans/
+│   ├── README.md
+│   ├── current/
+│   │   └── plan.<domain>.<name>.md
+│   └── archive/
+└── tasks/
 ```
 
 Rules:
-- `plans/current/` contains active strategy.
-- `plans/archive/` contains obsolete strategy and is not a current execution source by default.
+- `omni-coding/plans/current/` contains active strategy.
+- `omni-coding/plans/archive/` contains obsolete strategy and is not a current execution source by default.
 - File names should not carry version numbers; status and version belong inside the Plan object.
-- Plans may reference `specs/current/` and `tasks/`, but should not duplicate their contents.
+- Plans may reference `omni-coding/specs/current/` and `omni-coding/tasks/`, but should not duplicate their contents.
 
 ## Final Response Checklist
 

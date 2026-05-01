@@ -23,7 +23,7 @@ This skill includes reusable task-system templates under `assets/templates/tasks
 - `projects/project.md` for project-level task coordination.
 - `templates/task.md` for individual task cards.
 
-Use these assets when the target repository has no existing task-system convention and durable task tracking is useful. Copy only the needed templates, replace placeholders immediately, and adapt names and sections to the target repository. Do not create large empty task trees.
+Use these assets when the target repository has no existing task-system convention and durable task tracking is useful. Copy only the needed templates into `omni-coding/tasks/`, replace placeholders immediately, and adapt names and sections to the target repository. Do not create large empty task trees. Keep task artifacts under the shared `omni-coding/` workspace so they sit next to `omni-coding/specs/` and `omni-coding/plans/`.
 
 ## Language Policy
 
@@ -92,15 +92,18 @@ Persist a task system when at least one condition applies:
 - Progress must be synchronized across multiple sessions.
 - Multiple people or agents may need handoff context.
 
-If no task system exists and persistence is useful, prefer a small structure:
+If no task system exists and persistence is useful, prefer the shared `omni-coding/` structure:
 
 ```text
-tasks/
-├── README.md
-├── index.md
-├── inbox.md
-├── projects/
+omni-coding/
+├── specs/
+├── plans/
 └── tasks/
+    ├── README.md
+    ├── index.md
+    ├── inbox.md
+    ├── projects/
+    └── tasks/
 ```
 
 Create only the files that are needed for the current work. Do not generate large empty task trees.

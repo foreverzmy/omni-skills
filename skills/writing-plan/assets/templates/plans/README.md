@@ -1,14 +1,17 @@
 # Plans Guide
 
-This directory stores strategy-level Plans that bridge current Specs and executable Tasks. A Plan should explain how the system will satisfy the Spec, not redefine the Spec and not track task execution.
+This directory stores strategy-level Plans under `omni-coding/plans/` that bridge current Specs and executable Tasks. A Plan should explain how the system will satisfy the Spec, not redefine the Spec and not track task execution.
 
 ## Directory Structure
 
 ```text
-plans/
-├── README.md                # Planning guide
-├── current/                 # Active Plans
-└── archive/                 # Obsolete Plans, not active by default
+omni-coding/
+├── specs/                   # Current Spec System
+├── plans/
+│   ├── README.md            # Planning guide
+│   ├── current/             # Active Plans
+│   └── archive/             # Obsolete Plans, not active by default
+└── tasks/                   # Executable task system
 ```
 
 Use the smallest structure that fits the project. If the project already has a planning convention, follow it instead of forcing this layout.

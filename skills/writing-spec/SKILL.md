@@ -29,9 +29,9 @@ Spec System =
 ```
 
 Hard rules：
-- `specs/current/` 是唯一有效 Spec。任何时刻，LLM 读到的 Spec 必须是当前唯一正确版本。
-- `specs/guides/` 是弱语义 Guide，只能辅助理解，不参与默认决策。
-- `specs/log/` 和 `specs/archive/` 默认绝不注入 context，除非用户明确要求历史分析。
+- `omni-coding/specs/current/` 是唯一有效 Spec。任何时刻，LLM 读到的 Spec 必须是当前唯一正确版本。
+- `omni-coding/specs/guides/` 是弱语义 Guide，只能辅助理解，不参与默认决策。
+- `omni-coding/specs/log/` 和 `omni-coding/specs/archive/` 默认绝不注入 context，除非用户明确要求历史分析。
 - LLM 永远不要 replay Patch Log。Patch 是写入路径，Snapshot 是读取路径。
 - 不允许多个 current truth，例如 `api.md`、`api_v2.md`、`api_final.md`。
 - 不允许把 Spec 写成 narrative doc。Spec Object 必须结构化、可 diff、可局部更新。
@@ -39,20 +39,23 @@ Hard rules：
 
 ## 推荐 Directory Layout
 
-如果目标 repo 没有 Spec System，创建这个 minimal layout：
+如果目标 repo 没有 Spec System，创建这个 shared `omni-coding/` minimal layout：
 
 ```text
-specs/
-├── current/
-│   ├── capability/
-│   ├── system/
-│   └── contract/
-├── guides/
-│   ├── capability/
-│   ├── system/
-│   └── contract/
-├── log/
-└── archive/
+omni-coding/
+├── specs/
+│   ├── current/
+│   │   ├── capability/
+│   │   ├── system/
+│   │   └── contract/
+│   ├── guides/
+│   │   ├── capability/
+│   │   ├── system/
+│   │   └── contract/
+│   ├── log/
+│   └── archive/
+├── plans/
+└── tasks/
 ```
 
 Rules：
@@ -63,7 +66,7 @@ Rules：
 - 文件名不带版本号；版本写进 Spec Object 的 `version` 字段。
 - 一个文件只放一个 Spec Object 或一个 Guide Object。
 
-可直接复制模板：`assets/templates/specs/`。
+可直接复制模板到 `omni-coding/specs/`：`assets/templates/specs/`。
 
 ## Spec Object
 
@@ -204,13 +207,13 @@ Guide rules：
 ### 1. 先读取 Current Snapshot
 
 开始任何 Spec 相关任务时：
-1. 先检查 `specs/current/`。
+1. 先检查 `omni-coding/specs/current/`。
 2. 按用户请求定位相关 `spec_id`。
 3. 加载目标 Spec Object 和它的 `depends_on`、`extends`、`constrains`。
-4. 默认不加载 `specs/guides/`、`specs/log/` 或 `specs/archive/`。
+4. 默认不加载 `omni-coding/specs/guides/`、`omni-coding/specs/log/` 或 `omni-coding/specs/archive/`。
 5. 只有用户要求 debug、解释、onboarding、历史分析时，才按需加载 Guide、Log 或 Archive。
 
-如果 repo 还没有 `specs/current/`，先建议初始化最小 Spec System，不要直接写散乱文档。
+如果 repo 还没有 `omni-coding/specs/current/`，先建议初始化最小 Spec System，不要直接写散乱文档。
 
 ### 2. 分析影响范围
 
@@ -254,20 +257,20 @@ Patch 必须经过 Spec Compiler：
 2. apply 到内存中的 current Spec。
 3. merge 并检查冲突。
 4. 校验 Spec 没有 narrative pollution。
-5. 写回 `specs/current/` 的最终态 Snapshot。
-6. 把 Patch 写入 `specs/log/`。
-7. 把旧 Snapshot 写入 `specs/archive/`。
+5. 写回 `omni-coding/specs/current/` 的最终态 Snapshot。
+6. 把 Patch 写入 `omni-coding/specs/log/`。
+7. 把旧 Snapshot 写入 `omni-coding/specs/archive/`。
 
 本 skill 提供轻量脚本：`scripts/spec_store.py`。
 
 常用命令：
 
 ```bash
-python3 scripts/spec_store.py init ./specs
-python3 scripts/spec_store.py validate ./specs
-python3 scripts/spec_store.py read ./specs capability.file.write --with-deps
-python3 scripts/spec_store.py read ./specs capability.file.write --with-deps --with-guide
-python3 scripts/spec_store.py patch ./specs ./patch.yaml
+python3 scripts/spec_store.py init ./omni-coding/specs
+python3 scripts/spec_store.py validate ./omni-coding/specs
+python3 scripts/spec_store.py read ./omni-coding/specs capability.file.write --with-deps
+python3 scripts/spec_store.py read ./omni-coding/specs capability.file.write --with-deps --with-guide
+python3 scripts/spec_store.py patch ./omni-coding/specs ./patch.yaml
 ```
 
 如果脚本不在目标 repo，可以从本 skill 复制进去，或直接用同等流程手动执行；但原则不能变：LLM 只读 Snapshot，系统只通过 Patch 写入。
@@ -318,9 +321,9 @@ Query → spec_id → current/spec_id → relations → minimal current subset
 完成 Spec 相关操作后，至少说明：
 - 读取了哪些 current Spec Object。
 - 生成或应用了哪些 Patch。
-- 更新了哪些 `specs/current/` 文件。
-- 是否写入了 `specs/log/` 和 `specs/archive/`。
-- 是否新增或更新了 `specs/guides/`，以及这些 Guide 是否只用于解释。
+- 更新了哪些 `omni-coding/specs/current/` 文件。
+- 是否写入了 `omni-coding/specs/log/` 和 `omni-coding/specs/archive/`。
+- 是否新增或更新了 `omni-coding/specs/guides/`，以及这些 Guide 是否只用于解释。
 - 是否存在未解决 conflict 或需要用户确认的 evolution decision。
 
 如果没有完成 compile 和 validate，不要把结果描述成“Spec 已更新”。

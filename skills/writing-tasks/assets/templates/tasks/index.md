@@ -2,7 +2,7 @@
 
 Last updated: YYYY-MM-DD
 
-Guide: see `tasks/README.md`
+Guide: see `omni-coding/tasks/README.md`
 
 ## Doing
 - No active tasks yet.
