@@ -40,7 +40,7 @@ Plan = strategy + path
 Task = execution unit
 ```
 
-这三层不只是文档分类，而是 AI agent 的工作记忆分层：
+这三层不只是文档分类，而是 AI agent 的工作记忆分层；新功能尚未确认时，可以先在 Spec 层的 Draft Workspace 中调研和验证，再 promote 成 current Spec：
 
 - `Spec` 给 AI 判断“什么必须保持正确”。
 - `Plan` 给 AI 判断“为了满足 Spec，当前路线是什么”。
@@ -58,6 +58,7 @@ Task = execution unit
 - 边界和边界条件
 - invariants
 - 权限和限制
+- 新功能 Draft、需求调研、测试计划、验证证据和 candidate patches
 - Current State Snapshot、Patch Log、Archive 和 Spec Graph 治理
 
 核心定义：
@@ -130,6 +131,8 @@ npx skills add https://github.com/aiomni/omni-skills --skill writing-tasks
 当系统真相不清楚、接口边界混乱、权限约束分散或旧文档互相冲突时，先用 `writing-spec` 建立当前唯一真相。
 
 AI 默认应该读 current Spec，而不是 replay 历史讨论、Patch Log 或 Archive。
+
+如果是新功能调研、需求尚不清晰、需要测试开发或有多种演进路线，先用 `writing-spec` 创建 Draft。Draft 不是 current truth；只有用户确认并通过 candidate patches promote 后，才更新 current Spec。
 
 ### 2. 从 Spec 推导 Plan
 

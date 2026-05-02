@@ -8,14 +8,14 @@
 
 ### Spec Coding
 
-Spec Coding 是面向纯 AI 持续开发大型项目的工作流，把 source of truth、实施策略和执行单元分成三层：
+Spec Coding 是面向纯 AI 持续开发大型项目的工作流，把 source of truth、新功能调研、实施策略和执行单元分层管理：
 
 ```text
 writing-spec  ->  writing-plan  ->  writing-tasks
 Spec              Plan              Task
 ```
 
-当项目大到不能依赖聊天记录推进，而 AI 需要可恢复上下文、稳定真相、策略层规划和任务层执行状态时，使用这一组 skills。
+当项目大到不能依赖聊天记录推进，而 AI 需要可恢复上下文、稳定真相、Draft 化的新功能调研、策略层规划和任务层执行状态时，使用这一组 skills。
 
 详见独立文档 [`SPEC-CODING.md`](./SPEC-CODING.md)，其中说明了 `writing-spec`、`writing-plan` 和 `writing-tasks` 的职责边界与使用顺序。
 
@@ -70,7 +70,7 @@ done
 
 | 需求 | Skill |
 | --- | --- |
-| 维护 AI Coding source of truth | `writing-spec` |
+| Draft 并维护 AI Coding source of truth | `writing-spec` |
 | 定义实施策略和 orchestration | `writing-plan` |
 | 创建可追踪、可 review 的执行单元 | `writing-tasks` |
 | 为 `egui` / `eframe` 增加截图工作流 | `egui-screenshot` |

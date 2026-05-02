@@ -8,14 +8,14 @@ User-focused skills for reusable AI/Codex workflows.
 
 ### Spec Coding
 
-Spec Coding is the workflow for using AI agents to continuously develop large projects by separating source of truth, implementation strategy, and executable work:
+Spec Coding is the workflow for using AI agents to continuously develop large projects by separating source of truth, feature discovery, implementation strategy, and executable work:
 
 ```text
 writing-spec  ->  writing-plan  ->  writing-tasks
 Spec              Plan              Task
 ```
 
-Use it when a project is too large to rely on chat history alone, and AI needs recoverable context, stable truth, strategy-level planning, and task-level execution state.
+Use it when a project is too large to rely on chat history alone, and AI needs recoverable context, stable truth, draft-based feature discovery, strategy-level planning, and task-level execution state.
 
 See [`SPEC-CODING.md`](./SPEC-CODING.md) for the dedicated Spec Coding guide, including the `writing-spec`, `writing-plan`, and `writing-tasks` skills.
 
@@ -70,7 +70,7 @@ done
 
 | Need | Skill |
 | --- | --- |
-| Maintain AI Coding source of truth | `writing-spec` |
+| Draft and maintain AI Coding source of truth | `writing-spec` |
 | Define implementation strategy and orchestration | `writing-plan` |
 | Create tracked, reviewable execution units | `writing-tasks` |
 | Add screenshot workflows for `egui` / `eframe` | `egui-screenshot` |
